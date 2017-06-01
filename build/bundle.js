@@ -11010,7 +11010,7 @@ function warning(message) {
 
 
 Object.defineProperty(exports, "__esModule", {
-    value: true
+  value: true
 });
 
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
@@ -11027,8 +11027,6 @@ var _Content = __webpack_require__(100);
 
 var _Content2 = _interopRequireDefault(_Content);
 
-var _reactRedux = __webpack_require__(55);
-
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -11038,60 +11036,31 @@ function _possibleConstructorReturn(self, call) { if (!self) { throw new Referen
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
 var App = function (_React$Component) {
-    _inherits(App, _React$Component);
+  _inherits(App, _React$Component);
 
-    function App() {
-        _classCallCheck(this, App);
+  function App() {
+    _classCallCheck(this, App);
 
-        return _possibleConstructorReturn(this, (App.__proto__ || Object.getPrototypeOf(App)).apply(this, arguments));
+    return _possibleConstructorReturn(this, (App.__proto__ || Object.getPrototypeOf(App)).apply(this, arguments));
+  }
+
+  _createClass(App, [{
+    key: 'render',
+    value: function render() {
+      return _react2.default.createElement(
+        'div',
+        { className: 'container' },
+        _react2.default.createElement(_Header2.default, null),
+        _react2.default.createElement(_Content2.default, null)
+      );
     }
+  }]);
 
-    _createClass(App, [{
-        key: 'render',
-        value: function render() {
-            var _this2 = this;
-
-            return _react2.default.createElement(
-                'div',
-                { className: 'container' },
-                _react2.default.createElement(_Header2.default, { modal: this.props.modal, showModal: function showModal(modalType) {
-                        return _this2.props.onShowModal(modalType);
-                    }, hideModal: this.props.onHideModal.bind(this) }),
-                _react2.default.createElement(_Content2.default, null)
-            );
-        }
-    }]);
-
-    return App;
+  return App;
 }(_react2.default.Component);
 
+exports.default = App;
 ;
-
-var mapStateToProps = function mapStateToProps(state) {
-    return {
-        modal: state.modalReducer,
-        user: state.userReducer
-    };
-};
-
-var mapDispatchToProps = function mapDispatchToProps(dispatch) {
-    return {
-        onShowModal: function onShowModal(modalType) {
-            dispatch({
-                type: 'SHOW_MODAL_WINDOW',
-                modalType: modalType
-            });
-        },
-        onHideModal: function onHideModal() {
-            dispatch({
-                type: 'HIDE_MODAL_WINDOW',
-                modalType: null
-            });
-        }
-    };
-};
-
-exports.default = (0, _reactRedux.connect)(mapStateToProps, mapDispatchToProps)(App);
 
 /***/ }),
 /* 97 */
@@ -11238,7 +11207,7 @@ exports.default = Content;
 
 
 Object.defineProperty(exports, "__esModule", {
-  value: true
+    value: true
 });
 
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
@@ -11246,6 +11215,8 @@ var _createClass = function () { function defineProperties(target, props) { for 
 var _react = __webpack_require__(14);
 
 var _react2 = _interopRequireDefault(_react);
+
+var _reactRedux = __webpack_require__(55);
 
 var _ModalWindow = __webpack_require__(102);
 
@@ -11260,77 +11231,101 @@ function _possibleConstructorReturn(self, call) { if (!self) { throw new Referen
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
 var Header = function (_React$Component) {
-  _inherits(Header, _React$Component);
+    _inherits(Header, _React$Component);
 
-  function Header() {
-    _classCallCheck(this, Header);
+    function Header() {
+        _classCallCheck(this, Header);
 
-    return _possibleConstructorReturn(this, (Header.__proto__ || Object.getPrototypeOf(Header)).apply(this, arguments));
-  }
-
-  _createClass(Header, [{
-    key: 'onShowModal',
-    value: function onShowModal(type) {
-      this.props.showModal(type);
+        return _possibleConstructorReturn(this, (Header.__proto__ || Object.getPrototypeOf(Header)).apply(this, arguments));
     }
-  }, {
-    key: 'onHideFunc',
-    value: function onHideFunc() {
-      this.props.hideModal();
-    }
-  }, {
-    key: 'render',
-    value: function render() {
 
-      return _react2.default.createElement(
-        'div',
-        { className: 'navbar navbar-default' },
-        _react2.default.createElement(
-          'div',
-          { className: 'container-fluid' },
-          _react2.default.createElement(
-            'div',
-            { className: 'navbar-header navbar-left' },
-            _react2.default.createElement(
-              'a',
-              { className: 'link logo', href: '#' },
-              _react2.default.createElement('span', { className: 'glyphicon glyphicon-equalizer', 'aria-hidden': 'true' }),
-              'BestCompany'
-            )
-          ),
-          _react2.default.createElement(
-            'ul',
-            { className: 'nav navbar-nav navbar-right' },
-            _react2.default.createElement(
-              'li',
-              null,
-              _react2.default.createElement(
-                'a',
-                { className: 'a', onClick: this.onShowModal.bind(this, 'reg') },
-                '\u0420\u0435\u0433\u0438\u0441\u0442\u0440\u0430\u0446\u0438\u044F'
-              )
-            ),
-            _react2.default.createElement(
-              'li',
-              null,
-              _react2.default.createElement(
-                'a',
-                { className: 'a', onClick: this.onShowModal.bind(this, 'login') },
-                '\u0412\u043E\u0439\u0442\u0438'
-              )
-            )
-          ),
-          this.props.modal.modal.visibility ? _react2.default.createElement(_ModalWindow2.default, { onHide: this.onHideFunc.bind(this), type: this.props.modal.modal.type }) : null
-        )
-      );
-    }
-  }]);
+    _createClass(Header, [{
+        key: 'onShowModal',
+        value: function onShowModal(type) {
+            this.props.onShowModal(type);
+        }
+    }, {
+        key: 'onHideFunc',
+        value: function onHideFunc() {
+            this.props.onHideModal();
+        }
+    }, {
+        key: 'render',
+        value: function render() {
+            return _react2.default.createElement(
+                'div',
+                { className: 'navbar navbar-default' },
+                _react2.default.createElement(
+                    'div',
+                    { className: 'container-fluid' },
+                    _react2.default.createElement(
+                        'div',
+                        { className: 'navbar-header navbar-left' },
+                        _react2.default.createElement(
+                            'a',
+                            { className: 'link logo', href: '#' },
+                            _react2.default.createElement('span', { className: 'glyphicon glyphicon-equalizer', 'aria-hidden': 'true' }),
+                            'BestCompany'
+                        )
+                    ),
+                    _react2.default.createElement(
+                        'ul',
+                        { className: 'nav navbar-nav navbar-right' },
+                        _react2.default.createElement(
+                            'li',
+                            null,
+                            _react2.default.createElement(
+                                'a',
+                                { className: 'a', onClick: this.onShowModal.bind(this, 'reg') },
+                                '\u0420\u0435\u0433\u0438\u0441\u0442\u0440\u0430\u0446\u0438\u044F'
+                            )
+                        ),
+                        _react2.default.createElement(
+                            'li',
+                            null,
+                            _react2.default.createElement(
+                                'a',
+                                { className: 'a', onClick: this.onShowModal.bind(this, 'login') },
+                                '\u0412\u043E\u0439\u0442\u0438'
+                            )
+                        )
+                    ),
+                    this.props.modal.visibility ? _react2.default.createElement(_ModalWindow2.default, { onHide: this.onHideFunc.bind(this), type: this.props.modal.type }) : null
+                )
+            );
+        }
+    }]);
 
-  return Header;
+    return Header;
 }(_react2.default.Component);
 
-exports.default = Header;
 ;
+
+var mapStateToProps = function mapStateToProps(state) {
+    return {
+        modal: state.modalReducer,
+        user: state.userReducer
+    };
+};
+
+var mapDispatchToProps = function mapDispatchToProps(dispatch) {
+    return {
+        onShowModal: function onShowModal(modalType) {
+            dispatch({
+                type: 'SHOW_MODAL_WINDOW',
+                modalType: modalType
+            });
+        },
+        onHideModal: function onHideModal() {
+            dispatch({
+                type: 'HIDE_MODAL_WINDOW',
+                modalType: null
+            });
+        }
+    };
+};
+
+exports.default = (0, _reactRedux.connect)(mapStateToProps, mapDispatchToProps)(Header);
 
 /***/ }),
 /* 102 */
@@ -11481,11 +11476,12 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 /******** REDUX начало **********/
 
 var modalInitialState = {
-  modal: { visibility: false, type: null }
+  visibility: false,
+  type: null
 };
 
 var userInitialState = {
-  user: { firstname: 'none', lastname: 'none', username: 'none', age: 0, gender: 'none' }
+  firstname: 'none', lastname: 'none', username: 'none', age: 0, gender: 'none'
 };
 
 var modalReducer = function modalReducer() {
@@ -11494,9 +11490,9 @@ var modalReducer = function modalReducer() {
 
   switch (action.type) {
     case 'SHOW_MODAL_WINDOW':
-      return Object.assign({}, state, { modal: { visibility: true, type: action.modalType } });
+      return Object.assign({}, state, { visibility: true, type: action.modalType });
     case 'HIDE_MODAL_WINDOW':
-      return Object.assign({}, state, { modal: { visibility: false, type: action.modalType } });
+      return Object.assign({}, state, { visibility: false, type: action.modalType });
     default:
       return state;
   };

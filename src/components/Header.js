@@ -1,19 +1,19 @@
 import React from 'react';
+import { connect } from 'react-redux';
 
 import ModalWindow from './ModalWindow';
 
-export default class Header extends React.Component{
+class Header extends React.Component{
 
    onShowModal(type){
-     this.props.showModal(type);
+     this.props.onShowModal(type);
    }
 
    onHideFunc(){
-    this.props.hideModal();
+    this.props.onHideModal();
    }
 
    render(){
-     
      return(
        <div className="navbar navbar-default">
         <div className="container-fluid">
@@ -31,7 +31,7 @@ export default class Header extends React.Component{
             <li><a className="a" onClick={ this.onShowModal.bind(this, 'login')} >Войти</a></li>
           </ul>
 
-          { this.props.modal.modal.visibility ? <ModalWindow onHide={ this.onHideFunc.bind(this) } type={ this.props.modal.modal.type } /> : null }
+          { this.props.modal.visibility ? <ModalWindow onHide={ this.onHideFunc.bind(this) } type={ this.props.modal.type } /> : null }
 
         </div>
       </div>
@@ -39,3 +39,29 @@ export default class Header extends React.Component{
    }
 
 };
+
+const mapStateToProps = (state) => {
+    return {
+        modal: state.modalReducer,
+        user: state.userReducer
+    };
+};
+
+const mapDispatchToProps = (dispatch) => {
+    return {
+        onShowModal: (modalType) => {
+            dispatch({
+                type: 'SHOW_MODAL_WINDOW',
+                modalType: modalType
+            })
+        },
+        onHideModal: () => {
+          dispatch({
+                type: 'HIDE_MODAL_WINDOW',
+                modalType: null
+            })
+        }
+    };
+};
+
+export default connect(mapStateToProps,mapDispatchToProps)(Header);

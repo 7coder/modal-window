@@ -11,17 +11,18 @@ import App from './components/App';
 /******** REDUX начало **********/
 
 let modalInitialState = {
-  modal: { visibility: false, type: null }
+  visibility: false,
+  type: null
 };
 
 let userInitialState = {
-  user: { firstname: 'none', lastname: 'none', username: 'none', age: 0, gender: 'none'}
+  firstname: 'none', lastname: 'none', username: 'none', age: 0, gender: 'none'
 };
 
 const modalReducer = (state = modalInitialState, action) => {
    switch(action.type){
-     case 'SHOW_MODAL_WINDOW' : return Object.assign({}, state, { modal : {visibility: true, type: action.modalType}});
-     case 'HIDE_MODAL_WINDOW' : return Object.assign({}, state, { modal: {visibility: false, type: action.modalType}});
+     case 'SHOW_MODAL_WINDOW' : return Object.assign({}, state, { visibility: true, type: action.modalType});
+     case 'HIDE_MODAL_WINDOW' : return Object.assign({}, state, { visibility: false, type: action.modalType});
      default : return state;
    };
 };
