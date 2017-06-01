@@ -24,7 +24,7 @@ export default class ModalWindow extends React.Component{
   // };
 
   render(){
-    console.log(this.props.ajaxInfo.showInfo);
+  
     let headEl;
 
     if ( this.props.type === "reg" ){
