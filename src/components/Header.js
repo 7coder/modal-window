@@ -11,9 +11,11 @@ class Header extends React.Component{
 
    onHideFunc(){
     this.props.onHideModal();
+    this.props.onClearData();
    }
 
    render(){
+
      return(
        <div className="navbar navbar-default">
         <div className="container-fluid">
@@ -31,7 +33,7 @@ class Header extends React.Component{
             <li><a className="a" onClick={ this.onShowModal.bind(this, 'login')} >Войти</a></li>
           </ul>
 
-          { this.props.modal.visibility ? <ModalWindow onHide={ this.onHideFunc.bind(this) } type={ this.props.modal.type } /> : null }
+          { this.props.modal.visibility ? <ModalWindow ajaxInfo={this.props.ajaxInfo} user={this.props.user} onHide={ this.onHideFunc.bind(this)} type={ this.props.modal.type } visibility={this.props.modal.visibility} onChangeGender={this.props.onChangeGender} onSendData= {this.props.onSendData}/> : null }
 
         </div>
       </div>
@@ -43,7 +45,8 @@ class Header extends React.Component{
 const mapStateToProps = (state) => {
     return {
         modal: state.modalReducer,
-        user: state.userReducer
+        user: state.userReducer,
+        ajaxInfo: state.ajaxReducer
     };
 };
 
@@ -60,7 +63,41 @@ const mapDispatchToProps = (dispatch) => {
                 type: 'HIDE_MODAL_WINDOW',
                 modalType: null
             })
-        }
+        },
+        onChangeGender: (value) => {
+          dispatch({
+              type: 'USER_CHANGE_GENDER',
+              value: value
+          })
+        },
+        onSendData: (data) => {
+            fetch('/xyz', {
+              method: 'POST',
+              headers: {
+                'Accept': 'application/json',
+                'Content-type': 'application/json'
+              },
+              body: JSON.stringify(data)
+            })
+            .then( (response) => response.json())
+            .then( (result) => {
+                dispatch({
+                  type: 'AJAX_REQUEST_SUCCESS',
+                  obj: result
+                })
+             })
+             .catch( (error) => {
+               dispatch({
+                 type: 'AJAX_REQUEST_ERROR',
+                 error: error
+               })
+             })
+          },
+          onClearData: () => {
+            dispatch({
+              type: 'CLEAR_DATA'
+            })
+          }
     };
 };
 

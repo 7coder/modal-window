@@ -13,9 +13,11 @@ export default class ModalWindowLogin extends React.Component{
        password: this.refs.password.value
      };
 
-     console.log('Отправлено :', data);
+    //console.log('Отправлено :', data);
 
-    this.props.onSubmitHandler(data);
+    //this.props.onSubmitHandler(data);
+
+    this.props.onSendData(data);
 
   };
 

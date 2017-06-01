@@ -11207,7 +11207,7 @@ exports.default = Content;
 
 
 Object.defineProperty(exports, "__esModule", {
-    value: true
+  value: true
 });
 
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
@@ -11231,98 +11231,134 @@ function _possibleConstructorReturn(self, call) { if (!self) { throw new Referen
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
 var Header = function (_React$Component) {
-    _inherits(Header, _React$Component);
+  _inherits(Header, _React$Component);
 
-    function Header() {
-        _classCallCheck(this, Header);
+  function Header() {
+    _classCallCheck(this, Header);
 
-        return _possibleConstructorReturn(this, (Header.__proto__ || Object.getPrototypeOf(Header)).apply(this, arguments));
+    return _possibleConstructorReturn(this, (Header.__proto__ || Object.getPrototypeOf(Header)).apply(this, arguments));
+  }
+
+  _createClass(Header, [{
+    key: 'onShowModal',
+    value: function onShowModal(type) {
+      this.props.onShowModal(type);
     }
+  }, {
+    key: 'onHideFunc',
+    value: function onHideFunc() {
+      this.props.onHideModal();
+      this.props.onClearData();
+    }
+  }, {
+    key: 'render',
+    value: function render() {
 
-    _createClass(Header, [{
-        key: 'onShowModal',
-        value: function onShowModal(type) {
-            this.props.onShowModal(type);
-        }
-    }, {
-        key: 'onHideFunc',
-        value: function onHideFunc() {
-            this.props.onHideModal();
-        }
-    }, {
-        key: 'render',
-        value: function render() {
-            return _react2.default.createElement(
-                'div',
-                { className: 'navbar navbar-default' },
-                _react2.default.createElement(
-                    'div',
-                    { className: 'container-fluid' },
-                    _react2.default.createElement(
-                        'div',
-                        { className: 'navbar-header navbar-left' },
-                        _react2.default.createElement(
-                            'a',
-                            { className: 'link logo', href: '#' },
-                            _react2.default.createElement('span', { className: 'glyphicon glyphicon-equalizer', 'aria-hidden': 'true' }),
-                            'BestCompany'
-                        )
-                    ),
-                    _react2.default.createElement(
-                        'ul',
-                        { className: 'nav navbar-nav navbar-right' },
-                        _react2.default.createElement(
-                            'li',
-                            null,
-                            _react2.default.createElement(
-                                'a',
-                                { className: 'a', onClick: this.onShowModal.bind(this, 'reg') },
-                                '\u0420\u0435\u0433\u0438\u0441\u0442\u0440\u0430\u0446\u0438\u044F'
-                            )
-                        ),
-                        _react2.default.createElement(
-                            'li',
-                            null,
-                            _react2.default.createElement(
-                                'a',
-                                { className: 'a', onClick: this.onShowModal.bind(this, 'login') },
-                                '\u0412\u043E\u0439\u0442\u0438'
-                            )
-                        )
-                    ),
-                    this.props.modal.visibility ? _react2.default.createElement(_ModalWindow2.default, { onHide: this.onHideFunc.bind(this), type: this.props.modal.type }) : null
-                )
-            );
-        }
-    }]);
+      return _react2.default.createElement(
+        'div',
+        { className: 'navbar navbar-default' },
+        _react2.default.createElement(
+          'div',
+          { className: 'container-fluid' },
+          _react2.default.createElement(
+            'div',
+            { className: 'navbar-header navbar-left' },
+            _react2.default.createElement(
+              'a',
+              { className: 'link logo', href: '#' },
+              _react2.default.createElement('span', { className: 'glyphicon glyphicon-equalizer', 'aria-hidden': 'true' }),
+              'BestCompany'
+            )
+          ),
+          _react2.default.createElement(
+            'ul',
+            { className: 'nav navbar-nav navbar-right' },
+            _react2.default.createElement(
+              'li',
+              null,
+              _react2.default.createElement(
+                'a',
+                { className: 'a', onClick: this.onShowModal.bind(this, 'reg') },
+                '\u0420\u0435\u0433\u0438\u0441\u0442\u0440\u0430\u0446\u0438\u044F'
+              )
+            ),
+            _react2.default.createElement(
+              'li',
+              null,
+              _react2.default.createElement(
+                'a',
+                { className: 'a', onClick: this.onShowModal.bind(this, 'login') },
+                '\u0412\u043E\u0439\u0442\u0438'
+              )
+            )
+          ),
+          this.props.modal.visibility ? _react2.default.createElement(_ModalWindow2.default, { ajaxInfo: this.props.ajaxInfo, user: this.props.user, onHide: this.onHideFunc.bind(this), type: this.props.modal.type, visibility: this.props.modal.visibility, onChangeGender: this.props.onChangeGender, onSendData: this.props.onSendData }) : null
+        )
+      );
+    }
+  }]);
 
-    return Header;
+  return Header;
 }(_react2.default.Component);
 
 ;
 
 var mapStateToProps = function mapStateToProps(state) {
-    return {
-        modal: state.modalReducer,
-        user: state.userReducer
-    };
+  return {
+    modal: state.modalReducer,
+    user: state.userReducer,
+    ajaxInfo: state.ajaxReducer
+  };
 };
 
 var mapDispatchToProps = function mapDispatchToProps(dispatch) {
-    return {
-        onShowModal: function onShowModal(modalType) {
-            dispatch({
-                type: 'SHOW_MODAL_WINDOW',
-                modalType: modalType
-            });
+  return {
+    onShowModal: function onShowModal(modalType) {
+      dispatch({
+        type: 'SHOW_MODAL_WINDOW',
+        modalType: modalType
+      });
+    },
+    onHideModal: function onHideModal() {
+      dispatch({
+        type: 'HIDE_MODAL_WINDOW',
+        modalType: null
+      });
+    },
+    onChangeGender: function onChangeGender(value) {
+      dispatch({
+        type: 'USER_CHANGE_GENDER',
+        value: value
+      });
+    },
+    onSendData: function onSendData(data) {
+      fetch('/xyz', {
+        method: 'POST',
+        headers: {
+          'Accept': 'application/json',
+          'Content-type': 'application/json'
         },
-        onHideModal: function onHideModal() {
-            dispatch({
-                type: 'HIDE_MODAL_WINDOW',
-                modalType: null
-            });
-        }
-    };
+        body: JSON.stringify(data)
+      }).then(function (response) {
+        return response.json();
+      }).then(function (result) {
+        dispatch({
+          type: 'AJAX_REQUEST_SUCCESS',
+          obj: result
+        });
+      }).catch(function (error) {
+        dispatch({
+          type: 'AJAX_REQUEST_ERROR',
+          error: error
+        });
+      });
+    },
+    onClearData: function onClearData() {
+      dispatch({
+        type: 'CLEAR_DATA'
+      });
+    }
+  };
 };
 
 exports.default = (0, _reactRedux.connect)(mapStateToProps, mapDispatchToProps)(Header);
@@ -11375,27 +11411,25 @@ var ModalWindow = function (_React$Component) {
       this.props.onHide();
     }
   }, {
-    key: 'onSubmitData',
-    value: function onSubmitData(data) {
-      fetch('/xyz', {
-        method: 'POST',
-        headers: {
-          'Accept': 'application/json',
-          'Content-type': 'application/json'
-        },
-        body: JSON.stringify(data)
-      }).then(function (response) {
-        return response.json();
-      }).then(function (result) {
-        return console.log('Получен ответ от сервера:\n', 'Статус:', result.status, '\nОбъект:', result.text);
-      }).catch(function (error) {
-        return console.log(error);
-      });
-    }
-  }, {
     key: 'render',
-    value: function render() {
 
+
+    // onSubmitData(data){
+    //   fetch('/xyz', {
+    //     method: 'POST',
+    //     headers: {
+    //       'Accept': 'application/json',
+    //       'Content-type': 'application/json'
+    //     },
+    //     body: JSON.stringify(data)
+    //   })
+    //   .then( (response) =>  response.json())
+    //   .then( (result) => console.log('Получен ответ от сервера:\n','Статус:', result.status, '\nОбъект:', result.text))
+    //   .catch( (error) => console.log(error))
+    // };
+
+    value: function render() {
+      console.log(this.props.ajaxInfo.showInfo);
       var headEl = void 0;
 
       if (this.props.type === "reg") {
@@ -11413,6 +11447,58 @@ var ModalWindow = function (_React$Component) {
           ' \u0412\u0445\u043E\u0434'
         );
       };
+
+      var error = void 0;
+      var errorMessage = this.props.ajaxInfo.error.message;
+      if (this.props.ajaxInfo.error) {
+        error = _react2.default.createElement(
+          'p',
+          null,
+          _react2.default.createElement(
+            'b',
+            null,
+            '\u041E\u0448\u0438\u0431\u043A\u0430:'
+          ),
+          ' ',
+          errorMessage,
+          ' '
+        );
+      }
+
+      var showInfo = void 0;
+      var text = this.props.ajaxInfo.dataObj.text;
+      if (this.props.ajaxInfo.showInfo === true && this.props.visibility) {
+
+        showInfo = _react2.default.createElement(
+          'div',
+          { className: 'server-response' },
+          _react2.default.createElement(
+            'p',
+            null,
+            _react2.default.createElement(
+              'b',
+              null,
+              '\u041F\u043E\u043B\u0443\u0447\u0435\u043D \u043E\u0442\u0432\u0435\u0442 \u043E\u0442 \u0441\u0435\u0440\u0432\u0435\u0440\u0430:'
+            ),
+            ' ',
+            this.props.ajaxInfo.dataObj.status
+          ),
+          _react2.default.createElement(
+            'p',
+            { style: { width: 320, wordBreak: 'break-all' } },
+            _react2.default.createElement(
+              'b',
+              null,
+              '\u0414\u0430\u043D\u043D\u044B\u0435:'
+            ),
+            ' ',
+            JSON.stringify(text)
+          ),
+          error
+        );
+      } else {
+        showInfo = null;
+      }
 
       return _react2.default.createElement(
         'div',
@@ -11433,7 +11519,8 @@ var ModalWindow = function (_React$Component) {
           _react2.default.createElement(
             'div',
             { className: 'modal-window-container' },
-            this.props.type === "reg" ? _react2.default.createElement(_ModalWindowRegistration2.default, { onSubmitHandler: this.onSubmitData.bind(this) }) : _react2.default.createElement(_ModalWindowLogin2.default, { onSubmitHandler: this.onSubmitData.bind(this) })
+            this.props.type === "reg" ? _react2.default.createElement(_ModalWindowRegistration2.default, { onSendData: this.props.onSendData, onChangeGender: this.props.onChangeGender, user: this.props.user }) : _react2.default.createElement(_ModalWindowLogin2.default, { onSendData: this.props.onSendData }),
+            showInfo
           )
         )
       );
@@ -11467,6 +11554,10 @@ var _reduxLogger = __webpack_require__(98);
 
 var _reactRedux = __webpack_require__(55);
 
+var _reduxThunk = __webpack_require__(231);
+
+var _reduxThunk2 = _interopRequireDefault(_reduxThunk);
+
 var _App = __webpack_require__(96);
 
 var _App2 = _interopRequireDefault(_App);
@@ -11482,6 +11573,10 @@ var modalInitialState = {
 
 var userInitialState = {
   firstname: 'none', lastname: 'none', username: 'none', age: 0, gender: 'none'
+};
+
+var ajaxInitialState = {
+  dataObj: {}, showInfo: false, error: false
 };
 
 var modalReducer = function modalReducer() {
@@ -11503,8 +11598,26 @@ var userReducer = function userReducer() {
   var action = arguments[1];
 
   switch (action.type) {
-    case 'SEND_DATA_USERS':
-      return Object.assign({}, state, action.userData);
+    case 'USER_CHANGE_GENDER':
+      return Object.assign({}, state, { gender: action.value });
+    default:
+      return state;
+  };
+};
+
+var ajaxReducer = function ajaxReducer() {
+  var state = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : ajaxInitialState;
+  var action = arguments[1];
+
+  switch (action.type) {
+    case 'AJAX_REQUEST':
+      return state;
+    case 'AJAX_REQUEST_SUCCESS':
+      return Object.assign({}, state, { showInfo: true, dataObj: action.obj });
+    case 'AJAX_REQUEST_ERROR':
+      return Object.assign({}, state, { showInfo: true, error: action.error });
+    case 'CLEAR_DATA':
+      return Object.assign({}, state, ajaxInitialState);
     default:
       return state;
   };
@@ -11512,7 +11625,7 @@ var userReducer = function userReducer() {
 
 /******** REDUX конец **********/
 
-var myStore = (0, _redux.createStore)((0, _redux.combineReducers)({ modalReducer: modalReducer, userReducer: userReducer }), (0, _redux.applyMiddleware)((0, _reduxLogger.createLogger)()));
+var myStore = (0, _redux.createStore)((0, _redux.combineReducers)({ modalReducer: modalReducer, userReducer: userReducer, ajaxReducer: ajaxReducer }), (0, _redux.applyMiddleware)((0, _reduxLogger.createLogger)(), _reduxThunk2.default));
 
 _reactDom2.default.render(_react2.default.createElement(
   _reactRedux.Provider,
@@ -24860,7 +24973,7 @@ var ModalWindowLogin = function (_React$Component) {
   }
 
   _createClass(ModalWindowLogin, [{
-    key: '_onSubmit',
+    key: "_onSubmit",
     value: function _onSubmit(e) {
 
       e.preventDefault();
@@ -24870,53 +24983,55 @@ var ModalWindowLogin = function (_React$Component) {
         password: this.refs.password.value
       };
 
-      console.log('Отправлено :', data);
+      //console.log('Отправлено :', data);
 
-      this.props.onSubmitHandler(data);
+      //this.props.onSubmitHandler(data);
+
+      this.props.onSendData(data);
     }
   }, {
-    key: 'render',
+    key: "render",
     value: function render() {
       return _react2.default.createElement(
-        'form',
+        "form",
         { onSubmit: this._onSubmit.bind(this) },
         _react2.default.createElement(
-          'div',
-          { className: 'form-group' },
+          "div",
+          { className: "form-group" },
           _react2.default.createElement(
-            'label',
+            "label",
             null,
-            '\u041B\u043E\u0433\u0438\u043D'
+            "\u041B\u043E\u0433\u0438\u043D"
           ),
-          _react2.default.createElement('input', { type: 'text', ref: 'username', className: 'form-control', id: 'username' })
+          _react2.default.createElement("input", { type: "text", ref: "username", className: "form-control", id: "username" })
         ),
         _react2.default.createElement(
-          'div',
-          { className: 'form-group' },
+          "div",
+          { className: "form-group" },
           _react2.default.createElement(
-            'label',
+            "label",
             null,
-            '\u041F\u0430\u0440\u043E\u043B\u044C'
+            "\u041F\u0430\u0440\u043E\u043B\u044C"
           ),
-          _react2.default.createElement('input', { type: 'password', ref: 'password', className: 'form-control', id: 'password' })
+          _react2.default.createElement("input", { type: "password", ref: "password", className: "form-control", id: "password" })
         ),
         _react2.default.createElement(
-          'div',
-          { className: 'margin-bottom-20' },
-          '\u0417\u0430\u0431\u044B\u043B\u0438 \u043F\u0430\u0440\u043E\u043B\u044C? ',
+          "div",
+          { className: "margin-bottom-20" },
+          "\u0417\u0430\u0431\u044B\u043B\u0438 \u043F\u0430\u0440\u043E\u043B\u044C? ",
           _react2.default.createElement(
-            'a',
-            { href: '#' },
-            '\u0412\u043E\u0441\u0441\u0442\u0430\u043D\u043E\u0432\u0438\u0442\u044C \u043F\u0430\u0440\u043E\u043B\u044C'
+            "a",
+            { href: "#" },
+            "\u0412\u043E\u0441\u0441\u0442\u0430\u043D\u043E\u0432\u0438\u0442\u044C \u043F\u0430\u0440\u043E\u043B\u044C"
           )
         ),
         _react2.default.createElement(
-          'div',
-          { className: 'margin-bottom-20' },
+          "div",
+          { className: "margin-bottom-20" },
           _react2.default.createElement(
-            'button',
-            { className: 'center-block btn btn-success', type: 'submit' },
-            '\u0412\u043E\u0439\u0442\u0438'
+            "button",
+            { className: "center-block btn btn-success", type: "submit" },
+            "\u0412\u043E\u0439\u0442\u0438"
           )
         )
       );
@@ -24957,26 +25072,20 @@ function _inherits(subClass, superClass) { if (typeof superClass !== "function" 
 var ModalWindowRegistration = function (_React$Component) {
   _inherits(ModalWindowRegistration, _React$Component);
 
-  function ModalWindowRegistration(props) {
+  function ModalWindowRegistration() {
     _classCallCheck(this, ModalWindowRegistration);
 
-    var _this = _possibleConstructorReturn(this, (ModalWindowRegistration.__proto__ || Object.getPrototypeOf(ModalWindowRegistration)).call(this, props));
-
-    _this.state = {
-      gender: 'none'
-    };
-    return _this;
+    return _possibleConstructorReturn(this, (ModalWindowRegistration.__proto__ || Object.getPrototypeOf(ModalWindowRegistration)).apply(this, arguments));
   }
 
   _createClass(ModalWindowRegistration, [{
-    key: '_onChange',
+    key: "_onChange",
     value: function _onChange(e) {
-      this.setState({
-        gender: e.target.value
-      });
+      var gender = e.target.value;
+      this.props.onChangeGender(gender);
     }
   }, {
-    key: '_onSubmit',
+    key: "_onSubmit",
     value: function _onSubmit(e) {
 
       e.preventDefault();
@@ -24986,94 +25095,96 @@ var ModalWindowRegistration = function (_React$Component) {
         lastname: this.refs.lastname.value,
         username: this.refs.username.value,
         age: this.refs.age.value,
-        gender: this.state.gender
+        gender: this.props.user.gender
       };
 
-      console.log('Отправлено :', data);
+      //console.log('Отправлено :', data);
 
-      this.props.onSubmitHandler(data);
+      //this.props.onSubmitHandler(data);
+      this.props.onSendData(data);
     }
   }, {
-    key: 'render',
+    key: "render",
     value: function render() {
+
       return _react2.default.createElement(
-        'form',
+        "form",
         { onSubmit: this._onSubmit.bind(this) },
         _react2.default.createElement(
-          'div',
-          { className: 'form-group' },
+          "div",
+          { className: "form-group" },
           _react2.default.createElement(
-            'label',
+            "label",
             null,
-            '\u0418\u043C\u044F'
+            "\u0418\u043C\u044F"
           ),
-          _react2.default.createElement('input', { type: 'text', ref: 'firstname', className: 'form-control', id: 'firstname' })
+          _react2.default.createElement("input", { type: "text", ref: "firstname", className: "form-control", id: "firstname" })
         ),
         _react2.default.createElement(
-          'div',
-          { className: 'form-group' },
+          "div",
+          { className: "form-group" },
           _react2.default.createElement(
-            'label',
+            "label",
             null,
-            '\u0424\u0430\u043C\u0438\u043B\u0438\u044F'
+            "\u0424\u0430\u043C\u0438\u043B\u0438\u044F"
           ),
-          _react2.default.createElement('input', { type: 'text', ref: 'lastname', className: 'form-control', id: 'lastname' })
+          _react2.default.createElement("input", { type: "text", ref: "lastname", className: "form-control", id: "lastname" })
         ),
         _react2.default.createElement(
-          'div',
-          { className: 'form-group' },
+          "div",
+          { className: "form-group" },
           _react2.default.createElement(
-            'label',
+            "label",
             null,
-            'Username'
+            "Username"
           ),
-          _react2.default.createElement('input', { type: 'text', ref: 'username', className: 'form-control', id: 'username' })
+          _react2.default.createElement("input", { type: "text", ref: "username", className: "form-control", id: "username" })
         ),
         _react2.default.createElement(
-          'div',
-          { className: 'form-group' },
+          "div",
+          { className: "form-group" },
           _react2.default.createElement(
-            'label',
+            "label",
             null,
-            '\u0412\u043E\u0437\u0440\u0430\u0441\u0442'
+            "\u0412\u043E\u0437\u0440\u0430\u0441\u0442"
           ),
-          _react2.default.createElement('input', { type: 'text', ref: 'age', className: 'form-control', id: 'age' })
+          _react2.default.createElement("input", { type: "text", ref: "age", className: "form-control", id: "age" })
         ),
         _react2.default.createElement(
-          'div',
-          { className: 'form-group' },
+          "div",
+          { className: "form-group" },
           _react2.default.createElement(
-            'label',
+            "label",
             null,
-            '\u041F\u043E\u043B'
+            "\u041F\u043E\u043B"
           ),
           _react2.default.createElement(
-            'select',
-            { value: this.state.gender, onChange: this._onChange.bind(this), className: 'form-control' },
+            "select",
+            { value: this.props.user.gender, onChange: this._onChange.bind(this), className: "form-control" },
             _react2.default.createElement(
-              'option',
-              { value: 'none' },
-              '\u043D\u0435 \u0443\u043A\u0430\u0437\u044B\u0432\u0430\u0442\u044C'
+              "option",
+              { value: "none" },
+              "\u043D\u0435 \u0443\u043A\u0430\u0437\u044B\u0432\u0430\u0442\u044C"
             ),
             _react2.default.createElement(
-              'option',
-              { value: 'male' },
-              'M'
+              "option",
+              { value: "male" },
+              "M"
             ),
             _react2.default.createElement(
-              'option',
-              { value: 'female' },
-              '\u0416'
+              "option",
+              { value: "female" },
+              "\u0416"
             )
           )
         ),
         _react2.default.createElement(
-          'div',
-          { className: 'margin-bottom-20' },
+          "div",
+          { className: "margin-bottom-20" },
           _react2.default.createElement(
-            'button',
-            { className: 'center-block btn btn-success', type: 'submit' },
-            '\u0417\u0430\u0440\u0435\u0433\u0438\u0441\u0442\u0440\u0438\u0440\u043E\u0432\u0430\u0442\u044C\u0441\u044F'
+            "button",
+            { className: "center-block btn btn-success", type: "submit" },
+            "\u0417\u0430\u0440\u0435\u0433\u0438\u0441\u0442\u0440\u0438\u0440\u043E\u0432\u0430\u0442\u044C\u0441\u044F"
           )
         )
       );
@@ -25085,6 +25196,35 @@ var ModalWindowRegistration = function (_React$Component) {
 
 exports.default = ModalWindowRegistration;
 ;
+
+/***/ }),
+/* 231 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+exports.__esModule = true;
+function createThunkMiddleware(extraArgument) {
+  return function (_ref) {
+    var dispatch = _ref.dispatch,
+        getState = _ref.getState;
+    return function (next) {
+      return function (action) {
+        if (typeof action === 'function') {
+          return action(dispatch, getState, extraArgument);
+        }
+
+        return next(action);
+      };
+    };
+  };
+}
+
+var thunk = createThunkMiddleware();
+thunk.withExtraArgument = createThunkMiddleware;
+
+exports['default'] = thunk;
 
 /***/ })
 /******/ ]);

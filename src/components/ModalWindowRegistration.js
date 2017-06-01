@@ -2,17 +2,10 @@ import React from 'react';
 
 export default class ModalWindowRegistration extends React.Component{
 
-  constructor(props){
-    super(props);
-    this.state = {
-      gender: 'none'
-    }
-  };
 
   _onChange(e){
-    this.setState({
-      gender: e.target.value
-    });
+    let gender = e.target.value;
+    this.props.onChangeGender(gender)
   };
 
   _onSubmit(e){
@@ -24,17 +17,19 @@ export default class ModalWindowRegistration extends React.Component{
        lastname: this.refs.lastname.value,
        username: this.refs.username.value,
        age: this.refs.age.value,
-       gender: this.state.gender
+       gender: this.props.user.gender
      };
 
-    console.log('Отправлено :', data);
+    //console.log('Отправлено :', data);
 
-    this.props.onSubmitHandler(data);
+    //this.props.onSubmitHandler(data);
+    this.props.onSendData(data);
 
   };
 
 
   render(){
+    
     return(
 
       <form onSubmit={ this._onSubmit.bind(this) } >
@@ -61,7 +56,7 @@ export default class ModalWindowRegistration extends React.Component{
 
           <div className="form-group">
             <label>Пол</label>
-            <select value={this.state.gender } onChange={ this._onChange.bind(this) } className="form-control">
+            <select value={this.props.user.gender} onChange={ this._onChange.bind(this) } className="form-control">
               <option value="none">не указывать</option>
               <option value="male">M</option>
               <option value="female">Ж</option>

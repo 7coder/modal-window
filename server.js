@@ -13,9 +13,9 @@ app.get('/', (req, res) => {
 
 app.post('/xyz', (req,res) => {
   if ( req.body.firstname === '' || req.body.lastname === '' || req.body.age === '' || req.body.username === ''){
-    res.send({status: 'Не все поля заполнены', text: 'Пусто!!!'})
+    res.send({status: 'Не все поля заполнены', text: { message : 'Пусто'})
   } else {
-    res.send({status: 'Данные получены', text: req.body});
+    res.send({status: 'Данные получены сервером', text: req.body});
   }
 
 })
