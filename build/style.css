@@ -1,0 +1,48 @@
+.margin-bottom-20{
+  margin-bottom: 20px;
+}
+
+.navbar-header .logo{
+  font-size:1.5em;
+  margin: 10px 0 0 0;
+  display: block;
+}
+
+.close-button{
+  cursor: pointer;
+  display:block;
+  position: absolute;
+  right:0;
+}
+
+.modal-window-bg{
+  position: fixed;
+  top:0;
+  right:0;
+  left:0;
+  bottom:0;
+  background-color:rgba(0, 0, 0, 0.5);
+  z-index:2;
+}
+
+.modal-window{
+  position:absolute;
+  background: #fff;
+  width: 400px;
+  padding:20px 40px;
+  left: 50%;
+  margin-left: -200px;
+  border-radius: 5px;
+  top:10%;
+}
+
+.modal-window-head{
+  position: relative;
+  margin-bottom: 20px;
+  border-bottom: 1px #999 dotted;
+  padding-bottom: 20px;
+}
+
+.a{
+  cursor: pointer;
+}
